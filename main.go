@@ -83,12 +83,13 @@ func mainExitCode() int {
 			}
 			return 0
 		}
+		fmt.Println("Couldn't open config file:")
 		fmt.Println(err)
 		return 1
 	}
 	data, err := ioutil.ReadAll(file)
 	if err != nil {
-		// TODO proper error message / when does this happen?
+		fmt.Println("Couldn't read config file:")
 		fmt.Println(err)
 		return 1
 	}
