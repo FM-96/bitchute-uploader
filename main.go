@@ -73,7 +73,7 @@ func mainExitCode() int {
 	var err error
 	file, err := os.Open("config.json")
 	if err != nil {
-		if err.Error() == "open config.json: The system cannot find the file specified." {
+		if os.IsNotExist(err) {
 			fmt.Println("No config file found, creating example config")
 			err := ioutil.WriteFile("config.json", exampleconfig, 0644)
 			if err != nil {
